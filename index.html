@@ -2548,7 +2548,7 @@ input,textarea,select,button{font-family:inherit}
                 <div><label style="font-size:13px;font-weight:600;color:#334155;display:block;margin-bottom:6px">{{ t.preferredTime }}</label>
                   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(70px,1fr));gap:8px">
                     <sc-for list="{{ slotTabs }}" as="slot" hint-placeholder-count="8">
-                      <button type="button" sc-camel-on-click="{{ slot.onClick }}" style="border:1px solid #e2e8f0;border-radius:8px;padding:10px 4px;font-size:13px;font-weight:600;cursor:pointer;background:#fff;color:#334155">{{ slot.value }}</button>
+                      <button type="button" sc-camel-on-click="{{ slot.onClick }}" style="{{ slot.isActive ? 'border:1px solid #9C2D63;border-radius:8px;padding:10px 4px;font-size:13px;font-weight:600;cursor:pointer;background:#E8F5EA;color:#1B4B5C' : 'border:1px solid #e2e8f0;border-radius:8px;padding:10px 4px;font-size:13px;font-weight:600;cursor:pointer;background:#fff;color:#334155' }}">{{ slot.value }}</button>
                     </sc-for>
                   </div>
                 </div>
@@ -2721,9 +2721,9 @@ input,textarea,select,button{font-family:inherit}
               <div>
                 <label style="font-size:13px;font-weight:600;color:#334155;display:block;margin-bottom:6px">{{ t.roleField }}</label>
                 <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px">
-                  <button type="button" sc-camel-on-click="{{ setRolePatient }}" style="border:1px solid #e2e8f0;border-radius:8px;padding:9px 2px;font-size:12px;font-weight:600;cursor:pointer;background:#E8F5EA;color:#1B4B5C">{{ t.patientRole }}</button>
-                  <button type="button" sc-camel-on-click="{{ setRoleProfessional }}" style="border:1px solid #e2e8f0;border-radius:8px;padding:9px 2px;font-size:12px;font-weight:600;cursor:pointer;background:#fff;color:#334155">{{ t.professionalRole }}</button>
-                  <button type="button" sc-camel-on-click="{{ setRoleDoctor }}" style="border:1px solid #e2e8f0;border-radius:8px;padding:9px 2px;font-size:12px;font-weight:600;cursor:pointer;background:#fff;color:#334155">{{ t.doctorRole }}</button>
+                  <button type="button" sc-camel-on-click="{{ setRolePatient }}" style="{{ isRolePatient ? 'border:1px solid #9C2D63;border-radius:8px;padding:9px 2px;font-size:12px;font-weight:600;cursor:pointer;background:#E8F5EA;color:#1B4B5C' : 'border:1px solid #e2e8f0;border-radius:8px;padding:9px 2px;font-size:12px;font-weight:600;cursor:pointer;background:#fff;color:#334155' }}">{{ t.patientRole }}</button>
+                  <button type="button" sc-camel-on-click="{{ setRoleProfessional }}" style="{{ isRoleProfessional ? 'border:1px solid #9C2D63;border-radius:8px;padding:9px 2px;font-size:12px;font-weight:600;cursor:pointer;background:#E8F5EA;color:#1B4B5C' : 'border:1px solid #e2e8f0;border-radius:8px;padding:9px 2px;font-size:12px;font-weight:600;cursor:pointer;background:#fff;color:#334155' }}">{{ t.professionalRole }}</button>
+                  <button type="button" sc-camel-on-click="{{ setRoleDoctor }}" style="{{ isRoleDoctor ? 'border:1px solid #9C2D63;border-radius:8px;padding:9px 2px;font-size:12px;font-weight:600;cursor:pointer;background:#E8F5EA;color:#1B4B5C' : 'border:1px solid #e2e8f0;border-radius:8px;padding:9px 2px;font-size:12px;font-weight:600;cursor:pointer;background:#fff;color:#334155' }}">{{ t.doctorRole }}</button>
                 </div>
               </div>
               <button type="submit" style="background:#9C2D63;color:#fff;border:none;border-radius:10px;padding:13px;font-weight:700;cursor:pointer">{{ t.createAccount }}</button>
