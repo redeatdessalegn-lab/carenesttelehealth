@@ -3725,12 +3725,12 @@ class Component extends DCLogic {
       isAdminAddStaff: s.adminTab === 'add-staff',
       addStaffForm: s.addStaffForm, addStaffBusy: s.addStaffBusy,
       handleAddStaff: (e) => this.handleAddStaff(e),
-      addStaffFullNameChange:  (v) => this.updateAddStaffField('fullName', v),
-      addStaffEmailChange:     (v) => this.updateAddStaffField('email', v),
-      addStaffPasswordChange:  (v) => this.updateAddStaffField('password', v),
-      addStaffRoleChange:      (v) => this.updateAddStaffField('role', v),
-      addStaffSpecialtyChange: (v) => this.updateAddStaffField('specialty', v),
-      addStaffPhoneChange:     (v) => this.updateAddStaffField('phone', v),
+      addStaffFullNameChange:  (e) => this.updateAddStaffField('fullName', e.target ? e.target.value : e),
+      addStaffEmailChange:     (e) => this.updateAddStaffField('email', e.target ? e.target.value : e),
+      addStaffPasswordChange:  (e) => this.updateAddStaffField('password', e.target ? e.target.value : e),
+      addStaffRoleChange:      (e) => this.updateAddStaffField('role', e.target ? e.target.value : e),
+      addStaffSpecialtyChange: (e) => this.updateAddStaffField('specialty', e.target ? e.target.value : e),
+      addStaffPhoneChange:     (e) => this.updateAddStaffField('phone', e.target ? e.target.value : e),
     };
   }
 }
