@@ -2548,7 +2548,7 @@ input,textarea,select,button{font-family:inherit}
                 <div><label style="font-size:13px;font-weight:600;color:#334155;display:block;margin-bottom:6px">{{ t.preferredTime }}</label>
                   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(70px,1fr));gap:8px">
                     <sc-for list="{{ slotTabs }}" as="slot" hint-placeholder-count="8">
-                      <button type="button" sc-camel-on-click="{{ slot.onClick }}" style="{{ slot.isActive ? 'border:1px solid #9C2D63;border-radius:8px;padding:10px 4px;font-size:13px;font-weight:600;cursor:pointer;background:#E8F5EA;color:#1B4B5C' : 'border:1px solid #e2e8f0;border-radius:8px;padding:10px 4px;font-size:13px;font-weight:600;cursor:pointer;background:#fff;color:#334155' }}">{{ slot.value }}</button>
+                      <button type="button" sc-camel-on-click="{{ slot.onClick }}" style="{{ slot.style }}">{{ slot.value }}</button>
                     </sc-for>
                   </div>
                 </div>
@@ -2688,8 +2688,8 @@ input,textarea,select,button{font-family:inherit}
           <p style="margin:0;color:#64748b;font-size:14px">{{ t.welcomeSub }}</p>
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;background:#f1f5f9;border-radius:10px;padding:4px;margin-bottom:24px">
-          <button sc-camel-on-click="{{ setLoginMode }}" style="{{ isLoginMode ? 'border:none;border-radius:8px;padding:9px;font-weight:700;cursor:pointer;background:#fff;color:#0f172a' : 'border:none;border-radius:8px;padding:9px;font-weight:700;cursor:pointer;background:transparent;color:#64748b' }}">{{ t.loginTab }}</button>
-          <button sc-camel-on-click="{{ setRegisterMode }}" style="{{ isLoginMode ? 'border:none;border-radius:8px;padding:9px;font-weight:700;cursor:pointer;background:transparent;color:#64748b' : 'border:none;border-radius:8px;padding:9px;font-weight:700;cursor:pointer;background:#fff;color:#0f172a' }}">{{ t.registerTab }}</button>
+          <button sc-camel-on-click="{{ setLoginMode }}" style="{{ loginTabStyle }}">{{ t.loginTab }}</button>
+          <button sc-camel-on-click="{{ setRegisterMode }}" style="{{ registerTabStyle }}">{{ t.registerTab }}</button>
         </div>
 
         <sc-if value="{{ isLoginMode }}" hint-placeholder-val="{{ true }}">
@@ -2721,9 +2721,9 @@ input,textarea,select,button{font-family:inherit}
               <div>
                 <label style="font-size:13px;font-weight:600;color:#334155;display:block;margin-bottom:6px">{{ t.roleField }}</label>
                 <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px">
-                  <button type="button" sc-camel-on-click="{{ setRolePatient }}" style="{{ isRolePatient ? 'border:1px solid #9C2D63;border-radius:8px;padding:9px 2px;font-size:12px;font-weight:600;cursor:pointer;background:#E8F5EA;color:#1B4B5C' : 'border:1px solid #e2e8f0;border-radius:8px;padding:9px 2px;font-size:12px;font-weight:600;cursor:pointer;background:#fff;color:#334155' }}">{{ t.patientRole }}</button>
-                  <button type="button" sc-camel-on-click="{{ setRoleProfessional }}" style="{{ isRoleProfessional ? 'border:1px solid #9C2D63;border-radius:8px;padding:9px 2px;font-size:12px;font-weight:600;cursor:pointer;background:#E8F5EA;color:#1B4B5C' : 'border:1px solid #e2e8f0;border-radius:8px;padding:9px 2px;font-size:12px;font-weight:600;cursor:pointer;background:#fff;color:#334155' }}">{{ t.professionalRole }}</button>
-                  <button type="button" sc-camel-on-click="{{ setRoleDoctor }}" style="{{ isRoleDoctor ? 'border:1px solid #9C2D63;border-radius:8px;padding:9px 2px;font-size:12px;font-weight:600;cursor:pointer;background:#E8F5EA;color:#1B4B5C' : 'border:1px solid #e2e8f0;border-radius:8px;padding:9px 2px;font-size:12px;font-weight:600;cursor:pointer;background:#fff;color:#334155' }}">{{ t.doctorRole }}</button>
+                  <button type="button" sc-camel-on-click="{{ setRolePatient }}" style="{{ rolePatientStyle }}">{{ t.patientRole }}</button>
+                  <button type="button" sc-camel-on-click="{{ setRoleProfessional }}" style="{{ roleProfessionalStyle }}">{{ t.professionalRole }}</button>
+                  <button type="button" sc-camel-on-click="{{ setRoleDoctor }}" style="{{ roleDoctorStyle }}">{{ t.doctorRole }}</button>
                 </div>
               </div>
               <button type="submit" style="background:#9C2D63;color:#fff;border:none;border-radius:10px;padding:13px;font-weight:700;cursor:pointer">{{ t.createAccount }}</button>
@@ -2823,8 +2823,8 @@ input,textarea,select,button{font-family:inherit}
           </div>
           <div style="grid-column:span 2;min-width:0">
             <div style="display:flex;gap:6px;background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:4px;margin-bottom:20px;max-width:fit-content">
-              <button sc-camel-on-click="{{ setDashAppointments }}" style="{{ isDashAppointments ? 'border:none;border-radius:8px;padding:9px 18px;font-weight:600;font-size:13px;cursor:pointer;background:#E8F5EA;color:#1B4B5C' : 'border:none;border-radius:8px;padding:9px 18px;font-weight:600;font-size:13px;cursor:pointer;background:transparent;color:#64748b' }}">{{ t.myAppointments }}</button>
-              <button sc-camel-on-click="{{ setDashOrders }}" style="{{ isDashAppointments ? 'border:none;border-radius:8px;padding:9px 18px;font-weight:600;font-size:13px;cursor:pointer;background:transparent;color:#64748b' : 'border:none;border-radius:8px;padding:9px 18px;font-weight:600;font-size:13px;cursor:pointer;background:#E8F5EA;color:#1B4B5C' }}">{{ t.myOrders }}</button>
+              <button sc-camel-on-click="{{ setDashAppointments }}" style="{{ dashApptTabStyle }}">{{ t.myAppointments }}</button>
+              <button sc-camel-on-click="{{ setDashOrders }}" style="{{ dashOrderTabStyle }}">{{ t.myOrders }}</button>
             </div>
             <sc-if value="{{ isDashAppointments }}" hint-placeholder-val="{{ true }}">
               <div style="background:#fff;border-radius:14px;padding:8px;box-shadow:0 1px 3px rgba(0,0,0,0.06)">
@@ -2870,8 +2870,8 @@ input,textarea,select,button{font-family:inherit}
           </div>
           <div style="grid-column:span 3;min-width:0">
             <div style="display:flex;gap:20px;border-bottom:1px solid #e2e8f0;margin-bottom:20px">
-              <button sc-camel-on-click="{{ setProAppointments }}" style="{{ isProAppointments ? 'border:none;background:none;padding:10px 4px;font-weight:700;font-size:14px;cursor:pointer;color:#1B4B5C;border-bottom:2px solid #9C2D63' : 'border:none;background:none;padding:10px 4px;font-weight:700;font-size:14px;cursor:pointer;color:#64748b' }}">{{ t.appointments }}</button>
-              <button sc-camel-on-click="{{ setProPatients }}" style="{{ isProAppointments ? 'border:none;background:none;padding:10px 4px;font-weight:700;font-size:14px;cursor:pointer;color:#64748b' : 'border:none;background:none;padding:10px 4px;font-weight:700;font-size:14px;cursor:pointer;color:#1B4B5C;border-bottom:2px solid #9C2D63' }}">{{ t.patientsTab }}</button>
+              <button sc-camel-on-click="{{ setProAppointments }}" style="{{ proApptTabStyle }}">{{ t.appointments }}</button>
+              <button sc-camel-on-click="{{ setProPatients }}" style="{{ proPatientsTabStyle }}">{{ t.patientsTab }}</button>
             </div>
             <sc-if value="{{ isProAppointments }}" hint-placeholder-val="{{ true }}">
               <div style="background:#fff;border-radius:14px;box-shadow:0 1px 3px rgba(0,0,0,0.06)">
@@ -2917,11 +2917,11 @@ input,textarea,select,button{font-family:inherit}
           <div style="background:#fff;border-radius:14px;padding:20px;box-shadow:0 1px 3px rgba(0,0,0,0.06)"><p style="margin:0 0 6px;font-size:13px;color:#64748b">{{ t.salesSummary }}</p><div style="font-size:28px;font-weight:800;color:#9C2D63">{{ adminRevenue }}</div></div>
         </div>
         <div style="display:flex;gap:20px;border-bottom:1px solid #e2e8f0;margin-bottom:20px;flexWrap:wrap">
-          <button sc-camel-on-click="{{ setAdminUsersTab }}" style="{{ isAdminUsers ? 'border:none;background:none;padding:10px 4px;font-weight:700;font-size:14px;cursor:pointer;color:#1B4B5C;border-bottom:2px solid #9C2D63' : 'border:none;background:none;padding:10px 4px;font-weight:700;font-size:14px;cursor:pointer;color:#64748b' }}">{{ t.usersTab }}</button>
-          <button sc-camel-on-click="{{ setAdminApprovalsTab }}" style="{{ isAdminApprovals ? 'border:none;background:none;padding:10px 4px;font-weight:700;font-size:14px;cursor:pointer;color:#1B4B5C;border-bottom:2px solid #9C2D63' : 'border:none;background:none;padding:10px 4px;font-weight:700;font-size:14px;cursor:pointer;color:#64748b' }}">{{ t.approvalsTab }}</button>
-          <button sc-camel-on-click="{{ setAdminAppointmentsTab }}" style="{{ isAdminAppointments ? 'border:none;background:none;padding:10px 4px;font-weight:700;font-size:14px;cursor:pointer;color:#1B4B5C;border-bottom:2px solid #9C2D63' : 'border:none;background:none;padding:10px 4px;font-weight:700;font-size:14px;cursor:pointer;color:#64748b' }}">{{ t.appointmentsTab }}</button>
-          <button sc-camel-on-click="{{ setAdminOrdersTab }}" style="{{ isAdminOrders ? 'border:none;background:none;padding:10px 4px;font-weight:700;font-size:14px;cursor:pointer;color:#1B4B5C;border-bottom:2px solid #9C2D63' : 'border:none;background:none;padding:10px 4px;font-weight:700;font-size:14px;cursor:pointer;color:#64748b' }}">{{ t.ordersTab }}</button>
-          <button sc-camel-on-click="{{ setAdminAddStaffTab }}" style="{{ isAdminAddStaff ? 'border:none;background:none;padding:10px 4px;font-weight:700;font-size:14px;cursor:pointer;color:#1B4B5C;border-bottom:2px solid #9C2D63' : 'border:none;background:none;padding:10px 4px;font-weight:700;font-size:14px;cursor:pointer;color:#64748b' }}">{{ t.addStaffTab }}</button>
+          <button sc-camel-on-click="{{ setAdminUsersTab }}" style="{{ adminUsersTabStyle }}">{{ t.usersTab }}</button>
+          <button sc-camel-on-click="{{ setAdminApprovalsTab }}" style="{{ adminApprovalsTabStyle }}">{{ t.approvalsTab }}</button>
+          <button sc-camel-on-click="{{ setAdminAppointmentsTab }}" style="{{ adminApptsTabStyle }}">{{ t.appointmentsTab }}</button>
+          <button sc-camel-on-click="{{ setAdminOrdersTab }}" style="{{ adminOrdersTabStyle }}">{{ t.ordersTab }}</button>
+          <button sc-camel-on-click="{{ setAdminAddStaffTab }}" style="{{ adminAddStaffTabStyle }}">{{ t.addStaffTab }}</button>
         </div>
 
         <sc-if value="{{ isAdminUsers }}" hint-placeholder-val="{{ true }}">
@@ -3423,6 +3423,9 @@ class Component extends DCLogic {
   handleContact(e) { e.preventDefault(); e.target.reset(); this._toast('Thank you for your message! We will get back to you shortly.'); }
 
   updateAuthField(f, v) { this.setState(s => ({ authForm: { ...s.authForm, [f]: v } })); }
+  setAuthRole(role) { this.setState(s => ({ authForm: { ...s.authForm, role } })); }
+  setLoginMode() { this.setState({ authMode: 'login', registrationPending: false }); }
+  setRegisterMode() { this.setState({ authMode: 'register', registrationPending: false }); }
   updateBookField(field, value) { this.setState(s => ({ bookForm: { ...s.bookForm, [field]: value } })); }
   _fmtDate(d) {
     if (!d) return '';
@@ -3624,7 +3627,7 @@ class Component extends DCLogic {
     const isMine = (r) => !!myEmail && (!r.email || r.email === myEmail);
     const myAppointments = s.patientAppointments.filter(isMine);
     const myOrders = s.patientOrders.filter(isMine);
-    const slotTabs = DATA.timeSlots.map(slot => ({ value: slot, isActive: s.bookForm.timeSlot === slot, onClick: () => this.updateBookField('timeSlot', slot) }));
+    const slotTabs = DATA.timeSlots.map(slot => ({ value: slot, isActive: s.bookForm.timeSlot === slot, onClick: () => this.updateBookField('timeSlot', slot), style: s.bookForm.timeSlot === slot ? 'border:1px solid #9C2D63;border-radius:8px;padding:10px 4px;font-size:13px;font-weight:600;cursor:pointer;background:#E8F5EA;color:#1B4B5C' : 'border:1px solid #e2e8f0;border-radius:8px;padding:10px 4px;font-size:13px;font-weight:600;cursor:pointer;background:#fff;color:#334155' }));
     const proAppointmentsView = s.proAppointments.map(a => ({ ...a, onConfirm: () => this.updateProAppointment(a.id, 'confirmed'), onCancel: () => this.updateProAppointment(a.id, 'cancelled') }));
     const adminUsersFiltered = s.adminUsers.filter(u => (u.fullName + u.role).toLowerCase().includes(s.adminSearch.toLowerCase())).map(u => ({ ...u, onApprove: () => this.updateAdminUserStatus(u.id, 'active'), onReject: () => this.updateAdminUserStatus(u.id, 'rejected') }));
     const pendingApprovalsView = s.adminUsers.filter(u => u.status === 'pending').map(u => ({ ...u, onApprove: () => this.updateAdminUserStatus(u.id, 'active'), onReject: () => this.updateAdminUserStatus(u.id, 'rejected') }));
@@ -3675,6 +3678,9 @@ class Component extends DCLogic {
       authPasswordChange: (e) => this.updateAuthField('password', e.target.value),
       authFullNameChange: (e) => this.updateAuthField('fullName', e.target.value),
       isRolePatient: s.authForm.role === 'patient', isRoleProfessional: s.authForm.role === 'health_professional', isRoleDoctor: s.authForm.role === 'doctor',
+      rolePatientStyle:      s.authForm.role === 'patient'            ? 'border:1px solid #9C2D63;border-radius:8px;padding:9px 2px;font-size:12px;font-weight:600;cursor:pointer;background:#E8F5EA;color:#1B4B5C' : 'border:1px solid #e2e8f0;border-radius:8px;padding:9px 2px;font-size:12px;font-weight:600;cursor:pointer;background:#fff;color:#334155',
+      roleProfessionalStyle: s.authForm.role === 'health_professional'? 'border:1px solid #9C2D63;border-radius:8px;padding:9px 2px;font-size:12px;font-weight:600;cursor:pointer;background:#E8F5EA;color:#1B4B5C' : 'border:1px solid #e2e8f0;border-radius:8px;padding:9px 2px;font-size:12px;font-weight:600;cursor:pointer;background:#fff;color:#334155',
+      roleDoctorStyle:       s.authForm.role === 'doctor'             ? 'border:1px solid #9C2D63;border-radius:8px;padding:9px 2px;font-size:12px;font-weight:600;cursor:pointer;background:#E8F5EA;color:#1B4B5C' : 'border:1px solid #e2e8f0;border-radius:8px;padding:9px 2px;font-size:12px;font-weight:600;cursor:pointer;background:#fff;color:#334155',
       setRolePatient: () => this.setAuthRole('patient'), setRoleProfessional: () => this.setAuthRole('health_professional'), setRoleDoctor: () => this.setAuthRole('doctor'),
       handleLogin: (e) => this.handleLogin(e), handleRegister: (e) => this.handleRegister(e),
       consultShowForm: s.consultShowForm, consultNotShowForm: !s.consultShowForm, toggleConsultForm: () => this.toggleConsultForm(),
@@ -3705,6 +3711,17 @@ class Component extends DCLogic {
       adminTab: s.adminTab, isAdminUsers: s.adminTab === 'users', isAdminApprovals: s.adminTab === 'approvals', isAdminAppointments: s.adminTab === 'appointments', isAdminOrders: s.adminTab === 'orders',
       setAdminUsersTab: () => this.setAdminTab('users'), setAdminApprovalsTab: () => this.setAdminTab('approvals'), setAdminAppointmentsTab: () => this.setAdminTab('appointments'), setAdminOrdersTab: () => this.setAdminTab('orders'),
       setAdminAddStaffTab: () => this.setAdminTab('add-staff'),
+      loginTabStyle: s.authMode !== 'register' ? 'border:none;border-radius:8px;padding:9px;font-weight:700;cursor:pointer;background:#fff;color:#0f172a' : 'border:none;border-radius:8px;padding:9px;font-weight:700;cursor:pointer;background:transparent;color:#64748b',
+      registerTabStyle: s.authMode === 'register' ? 'border:none;border-radius:8px;padding:9px;font-weight:700;cursor:pointer;background:transparent;color:#64748b' : 'border:none;border-radius:8px;padding:9px;font-weight:700;cursor:pointer;background:#fff;color:#0f172a',
+      dashApptTabStyle: s.dashTab === 'appointments' ? 'border:none;border-radius:8px;padding:9px 18px;font-weight:600;font-size:13px;cursor:pointer;background:#E8F5EA;color:#1B4B5C' : 'border:none;border-radius:8px;padding:9px 18px;font-weight:600;font-size:13px;cursor:pointer;background:transparent;color:#64748b',
+      dashOrderTabStyle: s.dashTab === 'orders' ? 'border:none;border-radius:8px;padding:9px 18px;font-weight:600;font-size:13px;cursor:pointer;background:transparent;color:#64748b' : 'border:none;border-radius:8px;padding:9px 18px;font-weight:600;font-size:13px;cursor:pointer;background:#E8F5EA;color:#1B4B5C',
+      proApptTabStyle: s.proTab === 'appointments' ? 'border:none;background:none;padding:10px 4px;font-weight:700;font-size:14px;cursor:pointer;color:#1B4B5C;border-bottom:2px solid #9C2D63' : 'border:none;background:none;padding:10px 4px;font-weight:700;font-size:14px;cursor:pointer;color:#64748b',
+      proPatientsTabStyle: s.proTab === 'patients' ? 'border:none;background:none;padding:10px 4px;font-weight:700;font-size:14px;cursor:pointer;color:#64748b' : 'border:none;background:none;padding:10px 4px;font-weight:700;font-size:14px;cursor:pointer;color:#1B4B5C;border-bottom:2px solid #9C2D63',
+      adminUsersTabStyle: s.adminTab === 'users' ? 'border:none;background:none;padding:10px 4px;font-weight:700;font-size:14px;cursor:pointer;color:#1B4B5C;border-bottom:2px solid #9C2D63' : 'border:none;background:none;padding:10px 4px;font-weight:700;font-size:14px;cursor:pointer;color:#64748b',
+      adminApprovalsTabStyle: s.adminTab === 'approvals' ? 'border:none;background:none;padding:10px 4px;font-weight:700;font-size:14px;cursor:pointer;color:#1B4B5C;border-bottom:2px solid #9C2D63' : 'border:none;background:none;padding:10px 4px;font-weight:700;font-size:14px;cursor:pointer;color:#64748b',
+      adminApptsTabStyle: s.adminTab === 'appointments' ? 'border:none;background:none;padding:10px 4px;font-weight:700;font-size:14px;cursor:pointer;color:#1B4B5C;border-bottom:2px solid #9C2D63' : 'border:none;background:none;padding:10px 4px;font-weight:700;font-size:14px;cursor:pointer;color:#64748b',
+      adminOrdersTabStyle: s.adminTab === 'orders' ? 'border:none;background:none;padding:10px 4px;font-weight:700;font-size:14px;cursor:pointer;color:#1B4B5C;border-bottom:2px solid #9C2D63' : 'border:none;background:none;padding:10px 4px;font-weight:700;font-size:14px;cursor:pointer;color:#64748b',
+      adminAddStaffTabStyle: s.adminTab === 'add-staff' ? 'border:none;background:none;padding:10px 4px;font-weight:700;font-size:14px;cursor:pointer;color:#1B4B5C;border-bottom:2px solid #9C2D63' : 'border:none;background:none;padding:10px 4px;font-weight:700;font-size:14px;cursor:pointer;color:#64748b',
       isAdminAddStaff: s.adminTab === 'add-staff',
       addStaffForm: s.addStaffForm, addStaffBusy: s.addStaffBusy,
       handleAddStaff: (e) => this.handleAddStaff(e),
